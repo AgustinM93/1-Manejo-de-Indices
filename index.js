@@ -8,7 +8,7 @@ const canvas = getCanvasElement('canvas')
 const gl = getWebGL2Context(canvas)
 
 // Seteamos el color que vamos a usar para 'limpiar' el canvas (i.e. el color de fondo)
-gl.clearColor(0, 0, 0, 1)
+gl.clearColor(1, 1, 1, 1)
 
 // #️⃣ Creamos los shaders, el programa que vamos a usar, y guardamos info de sus atributos
 
@@ -23,28 +23,75 @@ const vertexColorLocation = gl.getAttribLocation(program, 'vertexColor')
 // #️⃣ Definimos la info de la geometría que vamos a dibujar (un cuadrado)
 
 const vertexPositions = [
-  -0.5, -0.5, // 0 👈 indice de cada posición
-  0.5, -0.5,  // 1
-  0.5, 0.5,   // 2
-  -0.5, 0.5   // 3
+  0.0, 0.0, // 0 👈 indice de cada posición
+  0.0, 0.6,  // 1
+  0.2, 0.3,  // 2
+  -0.2, 0.3, // 3
+  0.55, 0.25, //4
+  -0.55, 0.25, //5
+  -0.3, -0.1, //6
+  0.3, -0.1, //7
+  0.33, -0.52, //8
+  0.0, -0.35, //9
+  -0.33, -0.52, //10
 ]
 
 const vertexColors = [
-  1, 1, 1,    // 0 👈 indice de cada color
+  1, 0, 0,    // 0 👈 indice de cada color
   1, 0, 0,    // 1
-  0, 1, 0,    // 2
-  0, 0, 1     // 3
+  1, 0, 0,    // 2
+  1, 0, 0,     // 3
+  0, 0, 1,    // 4
+  0, 0, 1,     // 5
+  0, 0, 1,    // 6
+  0, 0, 1,    // 7
+  0, 0, 1,     //8
+  0, 0, 1,    // 9
+  0, 0, 1,     // 10
 ]
 
 const indices = [
   // primer triangulo
   0, 1,
+  1, 2,
+  2, 0,
+  // segundo triangulo
+  0, 1,
   1, 3,
   3, 0,
-  // segundo triangulo
-  3, 1,
-  1, 2,
-  2, 3
+  // tercer triangulo
+  0, 3,
+  3, 5,
+  5, 0,
+  // cuarto triangulo
+  0, 5,
+  5, 6,
+  6, 0,
+  // quinto triangulo
+  0, 6,
+  6, 10,
+  10, 0,
+  // sexto triangulo
+  0, 10,
+  10, 9,
+  9, 0,
+  // septimo triangulo
+  0, 9,
+  9, 8,
+  8, 0,
+  // octavo triangulo
+  0, 8,
+  8, 7,
+  7, 0,
+  // noveno triangulo
+  0, 7,
+  7, 4,
+  4, 0,
+  // decimo triangulo
+  0, 4,
+  4, 2,
+  2, 0,
+  
 ]
 
 /* 📝 Describimos las tres lineas que conforman a cada triangulo */
